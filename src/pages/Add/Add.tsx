@@ -4,6 +4,17 @@ import Navbar from '../../components/coomon/Navbar';
 const Add = () => {
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        fetch("http://localhost:5000/", {
+            method: 'POST',
+            body: JSON.stringify(values),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                alert("Successfully Added");
+            })
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -24,33 +35,25 @@ const Add = () => {
                     autoComplete="off"
                 >
                     <Form.Item
-                        label="Name"
-                        name="name"
+                        label="Book Name"
+                        name="bookName"
                         rules={[{ required: true, message: 'Please input your username!' }]}
                     >
                         <Input />
                     </Form.Item>
 
                     <Form.Item
-                        label="Phone"
-                        name="phone"
+                        label="Author Name"
+                        name="authorName"
                         rules={[{ required: true, message: 'Please input your phone!' }]}
                     >
                         <Input />
                     </Form.Item>
 
                     <Form.Item
-                        label="Email"
-                        name="email"
+                        label="Price"
+                        name="price"
                         rules={[{ required: true, message: 'Please input your email!' }]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Address"
-                        name="address"
-                        rules={[{ required: true, message: 'Please input your address!' }]}
                     >
                         <Input />
                     </Form.Item>
