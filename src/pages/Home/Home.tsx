@@ -1,5 +1,5 @@
 import { Row } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CommonCard from '../../components/coomon/CommonCard';
 import Navbar from '../../components/coomon/Navbar';
@@ -14,13 +14,6 @@ const Home = () => {
         dispatch<any>(getBook())
     }, [])
 
-    // const [data, setData] = useState([])
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/")
-    //         .then(res => res.json())
-    //         .then(data => setData(data.data))
-    // }, [])
-    // console.log(data);
     return (
         <>
             <Navbar />

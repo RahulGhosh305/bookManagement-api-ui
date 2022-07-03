@@ -66,19 +66,8 @@ const Details = () => {
 
     // Delete Book Items
     const handleDelete = (id: any) => {
-        console.log(id)
-
+        // console.log(id)
         dispatch<any>(deleteBook(id))
-
-
-
-        // fetch(`http://localhost:5000/${id}`, {
-        //     method: 'DELETE',
-        // })
-        //     .then(res => res.json())
-        //     .then(data => alert("Deleted"))
-
-
     }
 
     return (

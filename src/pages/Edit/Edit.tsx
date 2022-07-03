@@ -10,7 +10,7 @@ const Edit = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
     // console.log(id);
-    console.log(bookData);
+    // console.log(bookData);
 
     useEffect(() => {
         fetch(`http://localhost:5000/${id}`)
@@ -20,18 +20,8 @@ const Edit = () => {
 
     // Update Book
     const onFinish = (values: any) => {
-        console.log('Success:', values);
+        // console.log('Success:', values);
         dispatch<any>(updateBook(id, values))
-
-        // fetch(`http://localhost:5000/${id}`, {
-        //     method: 'PATCH',
-        //     body: JSON.stringify(values),
-        //     headers: {
-        //         'Content-type': 'application/json; charset=UTF-8',
-        //     },
-        // })
-        //     .then(res => res.json())
-        //     .then(data => alert(data.message))
     };
 
     const onFinishFailed = (errorInfo: any) => {

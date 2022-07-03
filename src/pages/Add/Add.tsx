@@ -8,17 +8,6 @@ const Add = () => {
     const onFinish = (values: any) => {
         // console.log('Success:', values);
         dispatch<any>(addBook(values))
-        // fetch("http://localhost:5000/", {
-        //     method: 'POST',
-        //     body: JSON.stringify(values),
-        //     headers: {
-        //         'Content-type': 'application/json; charset=UTF-8',
-        //     },
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         alert("Successfully Added");
-        //     })
     };
 
     const onFinishFailed = (errorInfo: any) => {
