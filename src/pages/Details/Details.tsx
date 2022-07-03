@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../../components/coomon/Navbar';
+import { useDispatch } from 'react-redux';
+import { deleteBook } from '../../redux/actionCreatetors/actionCreatetors';
 
 interface IData {
     authorName: string;
@@ -16,6 +18,8 @@ const Details = () => {
     console.log(bookdata);
     const navigate = useNavigate()
     const { id } = useParams()
+
+    const dispatch = useDispatch()
 
     // Get Single Book Item
     useEffect(() => {
@@ -63,11 +67,18 @@ const Details = () => {
     // Delete Book Items
     const handleDelete = (id: any) => {
         console.log(id)
-        fetch(`http://localhost:5000/${id}`, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => alert("Deleted"))
+
+        dispatch<any>(deleteBook(id))
+
+
+
+        // fetch(`http://localhost:5000/${id}`, {
+        //     method: 'DELETE',
+        // })
+        //     .then(res => res.json())
+        //     .then(data => alert("Deleted"))
+
+
     }
 
     return (

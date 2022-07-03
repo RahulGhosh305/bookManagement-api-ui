@@ -1,20 +1,24 @@
 import { Button, Form, Input } from 'antd';
+import { useDispatch } from 'react-redux';
 import Navbar from '../../components/coomon/Navbar';
+import { addBook } from '../../redux/actionCreatetors/actionCreatetors';
 
 const Add = () => {
+    const dispatch = useDispatch()
     const onFinish = (values: any) => {
-        console.log('Success:', values);
-        fetch("http://localhost:5000/", {
-            method: 'POST',
-            body: JSON.stringify(values),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                alert("Successfully Added");
-            })
+        // console.log('Success:', values);
+        dispatch<any>(addBook(values))
+        // fetch("http://localhost:5000/", {
+        //     method: 'POST',
+        //     body: JSON.stringify(values),
+        //     headers: {
+        //         'Content-type': 'application/json; charset=UTF-8',
+        //     },
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         alert("Successfully Added");
+        //     })
     };
 
     const onFinishFailed = (errorInfo: any) => {

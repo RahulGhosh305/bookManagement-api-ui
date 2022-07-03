@@ -1,11 +1,14 @@
 import { Button, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Navbar from '../../components/coomon/Navbar';
+import { updateBook } from '../../redux/actionCreatetors/actionCreatetors';
 
 const Edit = () => {
     const [bookData, setBookData] = useState()
     const { id } = useParams()
+    const dispatch = useDispatch()
     // console.log(id);
     console.log(bookData);
 
@@ -18,15 +21,17 @@ const Edit = () => {
     // Update Book
     const onFinish = (values: any) => {
         console.log('Success:', values);
-        fetch(`http://localhost:5000/${id}`, {
-            method: 'PATCH',
-            body: JSON.stringify(values),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then(res => res.json())
-            .then(data => alert(data.message))
+        dispatch<any>(updateBook(id, values))
+
+        // fetch(`http://localhost:5000/${id}`, {
+        //     method: 'PATCH',
+        //     body: JSON.stringify(values),
+        //     headers: {
+        //         'Content-type': 'application/json; charset=UTF-8',
+        //     },
+        // })
+        //     .then(res => res.json())
+        //     .then(data => alert(data.message))
     };
 
     const onFinishFailed = (errorInfo: any) => {
